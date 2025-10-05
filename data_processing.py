@@ -58,11 +58,11 @@ def create_sub2(preds):
     sub = pd.DataFrame()
     for i in range(0, 14):
         s = preds[preds['i'] == i].groupby('ticker')['predicted_value'].mean()
-        sub[f'p{i+shift}'] = s
+        sub[f'p{i+shift+1}'] = s
         if i in weekends:
             s1 = np.nan
-            sub[f'p{i+shift+1}'] = s1
-            sub[f'p{i+shift+2}'] = s1
+            sub[f'p{i+shift+1+1}'] = s1
+            sub[f'p{i+shift+1+2}'] = s1
             shift+=2
     sub = sub.reset_index()
     return sub
