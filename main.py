@@ -39,7 +39,7 @@ def main():
 
     preds = pred.drop('ticker', axis=1)*0.8 + pred2.drop('ticker', axis=1)*0.2
     preds['ticker'] = pred['ticker']
-    preds.to_csv('submission.csv')
+    pred2.to_csv('submission.csv')
 
 
 main()
