@@ -48,11 +48,11 @@ torch.set_default_dtype(dtype)
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # %%
-candles = pd.concat([pd.read_csv('candles.csv'), pd.read_csv('candles_2.csv')])
+candles = pd.concat([pd.read_csv('data/candles.csv'), pd.read_csv('data/candles_2.csv')])
 candles['begin'] = pd.to_datetime(candles['begin'])
 candles = candles.drop_duplicates().sort_values(by=['ticker', 'begin']).reset_index(drop=True)
 
-news = pd.concat([pd.read_csv('news.csv'), pd.read_csv('news_2.csv')]).drop(columns=['Unnamed: 0'])
+news = pd.concat([pd.read_csv('data/news.csv'), pd.read_csv('data/news_2.csv')]).drop(columns=['Unnamed: 0'])
 news['publish_date'] = pd.to_datetime(news['publish_date'])
 news = news.drop_duplicates().sort_values(by=['publish_date', 'title']).reset_index(drop=True)
 
@@ -646,7 +646,7 @@ def get_embedding(news: pd.DataFrame, date: datetime, ticker: str, n_articles=16
     return embeds.float().numpy()
 
 # %%
-candles = pd.concat([pd.read_csv('candles.csv'), pd.read_csv('candles_2.csv')])
+candles = pd.concat([pd.read_csv('data/candles.csv'), pd.read_csv('data/candles_2.csv')])
 candles['begin'] = pd.to_datetime(candles['begin'])
 candles = candles.drop_duplicates().sort_values(by=['ticker', 'begin']).reset_index(drop=True)
 
