@@ -1,7 +1,7 @@
 from data_processing import *
 from catboost_main_model import MultiStockTimeSeriesCatBoost
 from catboost_extra_with_emb import get_pred
-from news_encoder_binary import get_embedding
+
 
 def main():
     data = load_data()
