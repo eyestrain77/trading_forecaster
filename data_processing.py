@@ -53,10 +53,10 @@ def create_sub(preds):
     return sub
 
 def create_sub2(preds):
-    weekends = [2, 2+5, 2+10]
+    weekends = [1, 1+5, 1+10]
     shift = 0
     sub = pd.DataFrame()
-    for i in range(1, 15):
+    for i in range(0, 14):
         s = preds[preds['i'] == i].groupby('ticker')['predicted_value'].mean()
         sub[f'p{i+shift}'] = s
         if i in weekends:
