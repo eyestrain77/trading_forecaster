@@ -146,7 +146,7 @@ def get_pred():
         subset = candles[candles['ticker'] == ticker]
         subset, use_features = preprocess(subset)
         preds = make_model(subset, use_features)
-        res.append(pd.DataFrame({'i': list(range(14)), 'ticker': [ticker for i in range(14)], 'predicted_value': p}))
+        res.append(pd.DataFrame({'i': list(range(14)), 'ticker': [ticker for i in range(14)], 'predicted_value': preds}))
         print(preds.shape)
         print()
     res = pd.concat(res).reset_index(drop=True)
