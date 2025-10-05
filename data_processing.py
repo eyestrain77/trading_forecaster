@@ -57,11 +57,12 @@ def create_sub2(preds):
     shift = 0
     sub = pd.DataFrame()
     for i in range(1, 15):
-        if i not in weekends:
-            s = preds[preds['i'] == i].groupby('ticker')['predicted_value'].mean()
-        else:
-            s = np.nan
-            shift+=1
+        s = preds[preds['i'] == i].groupby('ticker')['predicted_value'].mean()
         sub[f'p{i+shift}'] = s
+        if i in weekends:
+            s1 = np.nan
+            sub[f'p{i+shift+1}'] = s1
+            sub[f'p{i+shift+2}'] = s1
+            shift+=2
     sub = sub.reset_index()
     return sub
