@@ -3,3 +3,9 @@ numpy
 scikit-learn
 catboost
 tqdm
+torch
+transformers
+tqdm
+requests
+pyarrow
+fastparquet
