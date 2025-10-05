@@ -38,7 +38,7 @@ def mark_data(df):
     predict_all = pd.merge(new_df, df, on=['ticker', 'begin'], how='inner').sort_values(['ticker', 'i', 'begin'])
     return predict_all
 
-def create_sub(preds, sub_name):
+def create_sub(preds):
     weekends = [3, 4, 3+7, 4+7, 3+14, 4+14]
     shift = 0
     sub = pd.DataFrame()
@@ -50,4 +50,17 @@ def create_sub(preds, sub_name):
             shift+=1
         sub[f'p{i}'] = s
     sub = sub.reset_index()
-    sub.to_csv(sub_name)
+    return sub
+
+def create_sub2(preds):
+    weekends = [3, 4, 3+7, 4+7, 3+14, 4+14]
+    sub = pd.DataFrame()
+    for i in range(1, 15):
+        if i not in weekends:
+            s = preds[preds['i'] == i].groupby('ticker')['predicted_value'].mean()
+        else:
+            s = np.nan
+            shift+=1
+        sub[f'p{i}'] = s
+    sub = sub.reset_index()
+    return sub

@@ -1,5 +1,7 @@
 from data_processing import *
 from catboost_main_model import MultiStockTimeSeriesCatBoost
+from catboost_extra_with_emb import get_pred
+from news_encoder_binary import get_embedding
 
 def main():
     data = load_data()
@@ -30,7 +32,13 @@ def main():
 
     pred = stock_predictor.predict(data_test, data_train)
 
-    create_sub(pred, 'submission.csv')
+    pred2 = get_pred()
 
-if __main__():
-    
+    pred = create_sub(pred)
+    pred2 = create_sub2(pred2)
+
+    preds = pred.drop('ticker', axis=1)*0.8 + pred2.drop('ticker', axis=1)*0.2
+    preds['ticker'] = pred['ticker']
+
+
+main()
