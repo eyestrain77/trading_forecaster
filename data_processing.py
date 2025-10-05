@@ -53,7 +53,7 @@ def create_sub(preds):
     return sub
 
 def create_sub2(preds):
-    weekends = [3, 4, 3+7, 4+7, 3+14, 4+14]
+    weekends = [2, 2+5, 2+10]
     shift = 0
     sub = pd.DataFrame()
     for i in range(1, 15):
