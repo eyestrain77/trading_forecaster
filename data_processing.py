@@ -3,8 +3,8 @@ from tqdm import tqdm
 import numpy as np
 
 def load_data():
-    candles = pd.read_csv('candles.csv')
-    candles2 = pd.read_csv('candles_2.csv')
+    candles = pd.read_csv('data/candles.csv')
+    candles2 = pd.read_csv('data/candles_2.csv')
 
     merged_candles = pd.concat([candles, candles2], ignore_index=True)
     merged_candles = merged_candles.sort_values(['ticker', 'begin'])
