@@ -62,6 +62,6 @@ def create_sub2(preds):
         else:
             s = np.nan
             shift+=1
-        sub[f'p{i}'] = s
+        sub[f'p{i+shift}'] = s
     sub = sub.reset_index()
     return sub
