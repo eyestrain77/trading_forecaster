@@ -35,7 +35,7 @@ def main():
     pred2 = get_pred()
 
     pred = create_sub(pred[pred['begin']=='2025-09-08'])
-    pred2 = create_sub2(pred2[pred2['begin']=='2025-09-08'])
+    pred2 = create_sub2(pred2)
 
     preds = pred.drop('ticker', axis=1)*0.8 + pred2.drop('ticker', axis=1)*0.2
     preds['ticker'] = pred['ticker']
